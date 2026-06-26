@@ -7,10 +7,13 @@
       name="description"
       content="VoltMarket - статический интернет-магазин электроники с каталогом, фильтрами и корзиной."
     />
+    <meta name="theme-color" content="#151719" />
     <title>VoltMarket - интернет-магазин электроники</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#catalog">К каталогу</a>
+
     <header class="site-header">
       <a class="brand" href="#top" aria-label="VoltMarket на главную">
         <span class="brand-mark">V</span>
@@ -29,7 +32,13 @@
           <span aria-hidden="true">⌕</span>
           <input id="globalSearch" type="search" placeholder="Найти технику" autocomplete="off" />
         </label>
-        <button class="icon-button" id="wishlistButton" type="button" aria-label="Показать избранное">
+        <button
+          class="icon-button"
+          id="wishlistButton"
+          type="button"
+          aria-label="Показать избранное"
+          aria-pressed="false"
+        >
           <span aria-hidden="true">♡</span>
           <span class="badge" id="wishlistCount">0</span>
         </button>
@@ -62,6 +71,14 @@
         </div>
         <div class="hero-media" aria-label="Подборка электроники VoltMarket">
           <img src="assets/hero-showcase.png" alt="Ноутбук, смартфон и наушники на витрине" />
+          <div class="hero-pill">
+            <span>Сервис</span>
+            <strong>24 месяца</strong>
+          </div>
+          <div class="hero-pill hero-pill-alt">
+            <span>Доставка</span>
+            <strong>от 48 ч</strong>
+          </div>
         </div>
       </section>
 
@@ -112,7 +129,10 @@
         </div>
 
         <div class="catalog-meta">
-          <span id="resultCount">0 товаров</span>
+          <span>
+            <strong id="resultCount">0 товаров</strong>
+            <span class="scope-note" id="scopeNote"></span>
+          </span>
           <button class="text-button" id="resetFilters" type="button">Сбросить фильтры</button>
         </div>
 
@@ -159,6 +179,22 @@
       </div>
     </footer>
 
+    <aside
+      class="quick-view"
+      id="quickView"
+      aria-hidden="true"
+      aria-label="Быстрый просмотр товара"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="quick-view-panel">
+        <button class="icon-button quick-view-close" id="quickViewClose" type="button" aria-label="Закрыть просмотр">
+          ×
+        </button>
+        <div id="quickViewContent"></div>
+      </div>
+    </aside>
+
     <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Корзина">
       <div class="cart-panel">
         <div class="cart-head">
@@ -184,6 +220,25 @@
             <span>Телефон</span>
             <input id="customerPhone" type="tel" placeholder="+7 999 000-00-00" required />
           </label>
+          <div class="delivery-progress">
+            <div class="delivery-progress-top">
+              <span id="deliveryNote">Добавь товары для расчёта доставки</span>
+              <strong>100 000 ₽</strong>
+            </div>
+            <span class="delivery-meter" aria-hidden="true">
+              <span id="deliveryMeter"></span>
+            </span>
+          </div>
+          <div class="cart-summary">
+            <div>
+              <span>Товары</span>
+              <strong id="cartSubtotal">0 ₽</strong>
+            </div>
+            <div>
+              <span>Скидка</span>
+              <strong id="cartDiscount">0 ₽</strong>
+            </div>
+          </div>
           <div class="cart-total">
             <span>Итого</span>
             <strong id="cartTotal">0 ₽</strong>

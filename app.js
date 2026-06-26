@@ -98,11 +98,13 @@ const products = [
 ];
 
 const categories = ['Все', ...new Set(products.map((product) => product.category))];
+const freeDeliveryFrom = 100000;
 const state = {
   category: 'Все',
   query: '',
   maxPrice: 250000,
   stockOnly: false,
+  favoritesOnly: false,
   sort: 'popular',
   cart: load('voltmarket-cart', {}),
   favorites: load('voltmarket-favorites', []),
@@ -111,9 +113,11 @@ const state = {
 };
 
 const elements = {
+  header: document.querySelector('.site-header'),
   tabs: document.querySelector('#categoryTabs'),
   grid: document.querySelector('#productGrid'),
   resultCount: document.querySelector('#resultCount'),
+  scopeNote: document.querySelector('#scopeNote'),
   search: document.querySelector('#globalSearch'),
   sort: document.querySelector('#sortSelect'),
   range: document.querySelector('#priceRange'),
@@ -127,10 +131,17 @@ const elements = {
   cartDrawer: document.querySelector('#cartDrawer'),
   cartItems: document.querySelector('#cartItems'),
   cartCount: document.querySelector('#cartCount'),
+  cartSubtotal: document.querySelector('#cartSubtotal'),
+  cartDiscount: document.querySelector('#cartDiscount'),
   cartTotal: document.querySelector('#cartTotal'),
+  deliveryNote: document.querySelector('#deliveryNote'),
+  deliveryMeter: document.querySelector('#deliveryMeter'),
   checkoutForm: document.querySelector('#checkoutForm'),
   promoInput: document.querySelector('#promoInput'),
   applyDeal: document.querySelector('#applyDeal'),
+  quickView: document.querySelector('#quickView'),
+  quickViewClose: document.querySelector('#quickViewClose'),
+  quickViewContent: document.querySelector('#quickViewContent'),
   compareTable: document.querySelector('#compareTable'),
   toast: document.querySelector('#toast'),
 };
@@ -163,11 +174,21 @@ function pluralProducts(count) {
   return `${count} товаров`;
 }
 
+function discountPercent(product) {
+  return Math.max(0, Math.round((1 - product.price / product.oldPrice) * 100));
+}
+
 function showToast(message) {
   elements.toast.textContent = message;
   elements.toast.classList.add('show');
   window.clearTimeout(showToast.timeoutId);
   showToast.timeoutId = window.setTimeout(() => elements.toast.classList.remove('show'), 2600);
+}
+
+function bumpCartBadge() {
+  elements.cartCount.classList.remove('bump');
+  void elements.cartCount.offsetWidth;
+  elements.cartCount.classList.add('bump');
 }
 
 function renderTabs() {
@@ -190,6 +211,7 @@ function renderTabs() {
 
 function filteredProducts() {
   return products
+    .filter((product) => !state.favoritesOnly || state.favorites.includes(product.id))
     .filter((product) => state.category === 'Все' || product.category === state.category)
     .filter((product) => product.price <= state.maxPrice)
     .filter((product) => !state.stockOnly || product.stock > 0)
@@ -209,10 +231,14 @@ function filteredProducts() {
 function renderProducts() {
   const list = filteredProducts();
   elements.resultCount.textContent = pluralProducts(list.length);
+  elements.scopeNote.textContent = state.favoritesOnly ? 'Избранное' : state.query ? 'Поиск' : '';
+  elements.wishlistButton.setAttribute('aria-pressed', String(state.favoritesOnly));
   elements.priceValue.textContent = money(Number(state.maxPrice));
 
   if (!list.length) {
-    elements.grid.innerHTML = '<p class="empty-state">Ничего не найдено. Попробуй сбросить фильтры.</p>';
+    elements.grid.innerHTML = state.favoritesOnly
+      ? '<p class="empty-state">В избранном пока пусто. Отметь товары сердцем в карточке.</p>'
+      : '<p class="empty-state">Ничего не найдено. Попробуй сбросить фильтры.</p>';
     return;
   }
 
@@ -224,11 +250,14 @@ function productCard(product) {
   const isCompared = state.compare.includes(product.id);
   const stockClass = product.stock > 5 ? 'stock' : 'low';
   const stockText = product.stock > 0 ? `${product.stock} шт. в наличии` : 'Под заказ';
+  const salePercent = discountPercent(product);
 
   return `
     <article class="product-card">
       <div class="product-image">
+        <span class="sale-badge">-${salePercent}%</span>
         <img src="${product.image}" alt="${product.name}" />
+        <button class="quick-view-button" type="button" data-view="${product.id}">Быстрый просмотр</button>
       </div>
       <div class="product-body">
         <div class="product-top">
@@ -237,6 +266,7 @@ function productCard(product) {
             class="favorite-button ${isFavorite ? 'active' : ''}"
             type="button"
             aria-label="${isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'}"
+            aria-pressed="${isFavorite}"
             data-favorite="${product.id}"
           >♡</button>
         </div>
@@ -261,6 +291,7 @@ function productCard(product) {
               class="compare-button ${isCompared ? 'active' : ''}"
               type="button"
               aria-label="${isCompared ? 'Убрать из сравнения' : 'Добавить к сравнению'}"
+              aria-pressed="${isCompared}"
               data-compare="${product.id}"
             >⇄</button>
           </div>
@@ -307,7 +338,20 @@ function renderCart() {
 
   const subtotal = entries.reduce((sum, entry) => sum + entry.product.price * entry.qty, 0);
   const discount = state.promo.toUpperCase() === 'VOLT10' ? Math.round(subtotal * 0.1) : 0;
-  elements.cartTotal.textContent = money(Math.max(subtotal - discount, 0));
+  const total = Math.max(subtotal - discount, 0);
+  const deliveryLeft = Math.max(freeDeliveryFrom - subtotal, 0);
+  const deliveryProgress = Math.min(100, Math.round((subtotal / freeDeliveryFrom) * 100));
+
+  elements.cartSubtotal.textContent = money(subtotal);
+  elements.cartDiscount.textContent = discount ? `−${money(discount)}` : money(0);
+  elements.cartTotal.textContent = money(total);
+  elements.deliveryMeter.style.width = `${deliveryProgress}%`;
+  elements.deliveryNote.textContent =
+    subtotal === 0
+      ? 'Добавь товары для расчёта доставки'
+      : deliveryLeft === 0
+        ? 'Бесплатная доставка уже в заказе'
+        : `До бесплатной доставки ${money(deliveryLeft)}`;
 }
 
 function renderCompare() {
@@ -367,6 +411,7 @@ function addToCart(id) {
   state.cart[id] = currentQty + 1;
   showToast(`${product.name} добавлен в корзину`);
   sync();
+  bumpCartBadge();
 }
 
 function updateQuantity(id, delta) {
@@ -406,22 +451,132 @@ function closeCart() {
   document.body.classList.remove('cart-open');
 }
 
+function productLead(product) {
+  const leads = {
+    Ноутбуки: 'Рабочая машина для задач, где важны экран, скорость и автономность.',
+    Смартфоны: 'Флагманский смартфон с ярким экраном и быстрым запасом памяти.',
+    Аудио: 'Чистый звук для дома, дороги и концентрации без лишнего шума.',
+    Гаджеты: 'Умный аксессуар для спорта, уведомлений и бесконтактной оплаты.',
+    Планшеты: 'Лёгкий экран для работы с контентом, заметками и презентациями.',
+    Фото: 'Компактная камера для видео, стримов и съёмки в движении.',
+    Игры: 'Игровой аксессуар с быстрым откликом и удобным контролем.',
+  };
+  return leads[product.category] ?? 'Техника с проверенной комплектацией и гарантией VoltMarket.';
+}
+
+function quickViewMarkup(product) {
+  const isFavorite = state.favorites.includes(product.id);
+  const isCompared = state.compare.includes(product.id);
+  const stockText = product.stock > 0 ? `${product.stock} шт. в наличии` : 'Под заказ';
+
+  return `
+    <div class="quick-view-content">
+      <div class="quick-view-image">
+        <img src="${product.image}" alt="${product.name}" />
+      </div>
+      <div class="quick-view-details">
+        <div>
+          <p class="eyebrow">${product.category}</p>
+          <h2>${product.name}</h2>
+        </div>
+        <p class="quick-view-lead">${productLead(product)}</p>
+        <div class="product-meta">
+          <span class="chip stock">${stockText}</span>
+          <span class="chip">★ ${product.rating}</span>
+          <span class="chip">-${discountPercent(product)}%</span>
+        </div>
+        <ul class="quick-view-specs">
+          ${product.specs.map((spec) => `<li>${spec}</li>`).join('')}
+        </ul>
+        <div class="price-row">
+          <span class="price">${money(product.price)}</span>
+          <span class="old-price">${money(product.oldPrice)}</span>
+        </div>
+        <div class="quick-view-actions">
+          <button class="add-button" type="button" data-add="${product.id}" ${product.stock ? '' : 'disabled'}>
+            ${product.stock ? 'В корзину' : 'Нет в наличии'}
+          </button>
+          <button
+            class="favorite-button ${isFavorite ? 'active' : ''}"
+            type="button"
+            aria-label="${isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'}"
+            aria-pressed="${isFavorite}"
+            data-favorite="${product.id}"
+          >♡</button>
+          <button
+            class="compare-button ${isCompared ? 'active' : ''}"
+            type="button"
+            aria-label="${isCompared ? 'Убрать из сравнения' : 'Добавить к сравнению'}"
+            aria-pressed="${isCompared}"
+            data-compare="${product.id}"
+          >⇄</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function openQuickView(id) {
+  const product = products.find((item) => item.id === id);
+  if (!product) return;
+  elements.quickViewContent.innerHTML = quickViewMarkup(product);
+  elements.quickView.dataset.product = id;
+  elements.quickView.classList.add('open');
+  elements.quickView.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function refreshQuickView() {
+  const id = elements.quickView.dataset.product;
+  if (!id || !elements.quickView.classList.contains('open')) return;
+  const product = products.find((item) => item.id === id);
+  if (product) elements.quickViewContent.innerHTML = quickViewMarkup(product);
+}
+
+function closeQuickView() {
+  elements.quickView.classList.remove('open');
+  elements.quickView.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  delete elements.quickView.dataset.product;
+}
+
 elements.tabs.addEventListener('click', (event) => {
   const button = event.target.closest('[data-category]');
   if (!button) return;
   state.category = button.dataset.category;
+  state.favoritesOnly = false;
   renderTabs();
   renderProducts();
 });
 
 elements.grid.addEventListener('click', (event) => {
+  const viewButton = event.target.closest('[data-view]');
   const addButton = event.target.closest('[data-add]');
   const favoriteButton = event.target.closest('[data-favorite]');
   const compareButton = event.target.closest('[data-compare]');
+  if (viewButton) openQuickView(viewButton.dataset.view);
   if (addButton) addToCart(addButton.dataset.add);
   if (favoriteButton) toggleFavorite(favoriteButton.dataset.favorite);
   if (compareButton) toggleCompare(compareButton.dataset.compare);
 });
+
+elements.quickView.addEventListener('click', (event) => {
+  const addButton = event.target.closest('[data-add]');
+  const favoriteButton = event.target.closest('[data-favorite]');
+  const compareButton = event.target.closest('[data-compare]');
+  if (event.target === elements.quickView) closeQuickView();
+  if (addButton) addToCart(addButton.dataset.add);
+  if (favoriteButton) {
+    toggleFavorite(favoriteButton.dataset.favorite);
+    refreshQuickView();
+  }
+  if (compareButton) {
+    toggleCompare(compareButton.dataset.compare);
+    refreshQuickView();
+  }
+});
+
+elements.quickViewClose.addEventListener('click', closeQuickView);
 
 elements.cartItems.addEventListener('click', (event) => {
   const inc = event.target.closest('[data-inc]');
@@ -460,6 +615,7 @@ elements.reset.addEventListener('click', () => {
   state.query = '';
   state.maxPrice = 250000;
   state.stockOnly = false;
+  state.favoritesOnly = false;
   state.sort = 'popular';
   elements.search.value = '';
   elements.range.value = String(state.maxPrice);
@@ -474,14 +630,13 @@ elements.wishlistButton.addEventListener('click', () => {
     showToast('Избранное пока пустое');
     return;
   }
+  state.favoritesOnly = !state.favoritesOnly;
   state.category = 'Все';
   state.query = '';
   elements.search.value = '';
-  const favoriteNames = state.favorites
-    .map((id) => products.find((product) => product.id === id)?.name)
-    .filter(Boolean)
-    .join(', ');
-  showToast(`В избранном: ${favoriteNames}`);
+  renderTabs();
+  renderProducts();
+  showToast(state.favoritesOnly ? 'Показываю избранное' : 'Показываю весь каталог');
 });
 
 elements.cartOpen.addEventListener('click', openCart);
@@ -520,7 +675,14 @@ elements.checkoutForm.addEventListener('submit', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeCart();
+  if (event.key === 'Escape') {
+    closeCart();
+    closeQuickView();
+  }
+});
+
+window.addEventListener('scroll', () => {
+  elements.header.classList.toggle('scrolled', window.scrollY > 12);
 });
 
 renderTabs();
