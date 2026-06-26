@@ -87,8 +87,46 @@ const products = [
     popularity: 91,
   },
   {
+    id: 'ryzen-9-7950x',
+    name: 'AMD Ryzen 9 7950X',
+    short: 'R9 7950X',
+    category: 'Процессоры',
+    slot: 'cpu',
+    price: 56990,
+    oldPrice: 64990,
+    rating: 4.9,
+    stock: 4,
+    image: 'assets/part-cpu.png',
+    specs: ['16 ядер / 32 потока', 'Socket AM5', 'Boost до 5.7 ГГц', 'TDP 170 Вт'],
+    tags: ['AM5', 'DDR5', 'Workstation'],
+    socket: 'AM5',
+    tdp: 170,
+    watt: 180,
+    performance: 99,
+    popularity: 87,
+  },
+  {
+    id: 'intel-i9-14900k',
+    name: 'Intel Core i9-14900K',
+    short: 'i9-14900K',
+    category: 'Процессоры',
+    slot: 'cpu',
+    price: 58990,
+    oldPrice: 69990,
+    rating: 4.8,
+    stock: 3,
+    image: 'assets/part-cpu.png',
+    specs: ['24 ядра / 32 потока', 'LGA1700', 'Boost до 6.0 ГГц', 'TDP 253 Вт'],
+    tags: ['LGA1700', 'DDR5', 'Flagship'],
+    socket: 'LGA1700',
+    tdp: 253,
+    watt: 285,
+    performance: 100,
+    popularity: 85,
+  },
+  {
     id: 'b650m-forge',
-    name: 'Forge B650M WiFi',
+    name: 'GIGABYTE B650M Gaming WiFi',
     short: 'B650M WiFi',
     category: 'Материнские платы',
     slot: 'motherboard',
@@ -108,7 +146,7 @@ const products = [
   },
   {
     id: 'x670e-aero',
-    name: 'Aero X670E Pro',
+    name: 'ASUS TUF Gaming X670E-Plus',
     short: 'X670E Pro',
     category: 'Материнские платы',
     slot: 'motherboard',
@@ -128,7 +166,7 @@ const products = [
   },
   {
     id: 'z790-proline',
-    name: 'ProLine Z790 Edge',
+    name: 'MSI MAG Z790 Tomahawk WiFi',
     short: 'Z790 Edge',
     category: 'Материнские платы',
     slot: 'motherboard',
@@ -148,7 +186,7 @@ const products = [
   },
   {
     id: 'b760m-prime',
-    name: 'Prime B760M Studio',
+    name: 'ASUS Prime B760M-A WiFi',
     short: 'B760M Studio',
     category: 'Материнские платы',
     slot: 'motherboard',
@@ -167,8 +205,48 @@ const products = [
     popularity: 77,
   },
   {
+    id: 'b650-aorus-elite',
+    name: 'GIGABYTE B650 AORUS Elite AX',
+    short: 'B650 Elite AX',
+    category: 'Материнские платы',
+    slot: 'motherboard',
+    price: 22990,
+    oldPrice: 26990,
+    rating: 4.7,
+    stock: 9,
+    image: 'assets/part-board.png',
+    specs: ['Socket AM5', 'DDR5', 'ATX', 'Wi-Fi 6E'],
+    tags: ['AM5', 'DDR5', 'ATX'],
+    socket: 'AM5',
+    memoryType: 'DDR5',
+    formFactor: 'ATX',
+    watt: 50,
+    performance: 84,
+    popularity: 89,
+  },
+  {
+    id: 'z790-aorus-pro',
+    name: 'GIGABYTE Z790 AORUS Pro X',
+    short: 'Z790 Pro X',
+    category: 'Материнские платы',
+    slot: 'motherboard',
+    price: 39990,
+    oldPrice: 45990,
+    rating: 4.8,
+    stock: 4,
+    image: 'assets/part-board.png',
+    specs: ['LGA1700', 'DDR5', 'ATX', 'PCIe 5.0'],
+    tags: ['LGA1700', 'DDR5', 'ATX'],
+    socket: 'LGA1700',
+    memoryType: 'DDR5',
+    formFactor: 'ATX',
+    watt: 62,
+    performance: 94,
+    popularity: 76,
+  },
+  {
     id: 'ddr5-32-6000',
-    name: 'VoltBlade DDR5 32 ГБ 6000',
+    name: 'Kingston FURY Beast DDR5 32 ГБ 6000',
     short: '32 ГБ 6000',
     category: 'Оперативная память',
     slot: 'ram',
@@ -187,7 +265,7 @@ const products = [
   },
   {
     id: 'ddr5-64-6400',
-    name: 'VoltBlade DDR5 64 ГБ 6400',
+    name: 'Kingston FURY Beast DDR5 64 ГБ 6400',
     short: '64 ГБ 6400',
     category: 'Оперативная память',
     slot: 'ram',
@@ -224,8 +302,46 @@ const products = [
     popularity: 61,
   },
   {
+    id: 'ddr5-48-7200',
+    name: 'G.Skill Trident Z5 RGB DDR5 48 ГБ 7200',
+    short: '48 ГБ 7200',
+    category: 'Оперативная память',
+    slot: 'ram',
+    price: 21990,
+    oldPrice: 25990,
+    rating: 4.8,
+    stock: 8,
+    image: 'assets/part-ram.png',
+    specs: ['2 x 24 ГБ', 'DDR5-7200', 'CL34', 'RGB'],
+    tags: ['DDR5', '48 ГБ', '7200 MT/s'],
+    memoryType: 'DDR5',
+    capacity: 48,
+    watt: 16,
+    performance: 94,
+    popularity: 84,
+  },
+  {
+    id: 'ddr5-96-6000',
+    name: 'Corsair Vengeance DDR5 96 ГБ 6000',
+    short: '96 ГБ 6000',
+    category: 'Оперативная память',
+    slot: 'ram',
+    price: 38990,
+    oldPrice: 44990,
+    rating: 4.7,
+    stock: 5,
+    image: 'assets/part-ram.png',
+    specs: ['2 x 48 ГБ', 'DDR5-6000', 'CL30', 'Low profile'],
+    tags: ['DDR5', '96 ГБ', 'Workstation'],
+    memoryType: 'DDR5',
+    capacity: 96,
+    watt: 18,
+    performance: 96,
+    popularity: 72,
+  },
+  {
     id: 'nvme-1tb-forge',
-    name: 'Forge NVMe 1 ТБ',
+    name: 'Samsung 980 PRO 1 ТБ',
     short: 'NVMe 1 ТБ',
     category: 'Накопители',
     slot: 'storage',
@@ -242,7 +358,7 @@ const products = [
   },
   {
     id: 'nvme-2tb-forge',
-    name: 'Forge NVMe 2 ТБ',
+    name: 'Samsung 990 PRO 2 ТБ',
     short: 'NVMe 2 ТБ',
     category: 'Накопители',
     slot: 'storage',
@@ -259,7 +375,7 @@ const products = [
   },
   {
     id: 'nvme-4tb-rocket',
-    name: 'Rocket NVMe 4 ТБ Gen5',
+    name: 'Crucial T700 NVMe 4 ТБ Gen5',
     short: 'NVMe 4 ТБ',
     category: 'Накопители',
     slot: 'storage',
@@ -273,6 +389,40 @@ const products = [
     watt: 12,
     performance: 96,
     popularity: 66,
+  },
+  {
+    id: 'nvme-2tb-wd-black',
+    name: 'WD Black SN850X 2 ТБ',
+    short: 'SN850X 2 ТБ',
+    category: 'Накопители',
+    slot: 'storage',
+    price: 16990,
+    oldPrice: 19990,
+    rating: 4.8,
+    stock: 14,
+    image: 'assets/part-ssd.png',
+    specs: ['PCIe 4.0', 'До 7300 МБ/с', 'Game Mode', 'M.2 2280'],
+    tags: ['PCIe 4.0', '2 ТБ', 'Gaming'],
+    watt: 8,
+    performance: 88,
+    popularity: 91,
+  },
+  {
+    id: 'sata-4tb-mx500',
+    name: 'Crucial MX500 4 ТБ SATA',
+    short: 'MX500 4 ТБ',
+    category: 'Накопители',
+    slot: 'storage',
+    price: 25990,
+    oldPrice: 29990,
+    rating: 4.6,
+    stock: 7,
+    image: 'assets/part-ssd.png',
+    specs: ['SATA 2.5"', 'До 560 МБ/с', '4 ТБ', 'Для архива'],
+    tags: ['SATA', '4 ТБ', 'Storage'],
+    watt: 5,
+    performance: 58,
+    popularity: 63,
   },
   {
     id: 'rtx-4070-super',
@@ -347,8 +497,62 @@ const products = [
     popularity: 72,
   },
   {
+    id: 'rtx-4060-ti',
+    name: 'NVIDIA GeForce RTX 4060 Ti 16 ГБ',
+    short: 'RTX 4060 Ti',
+    category: 'Видеокарты',
+    slot: 'gpu',
+    price: 49990,
+    oldPrice: 56990,
+    rating: 4.6,
+    stock: 9,
+    image: 'assets/part-gpu.png',
+    specs: ['16 ГБ GDDR6', '240 мм', '165 Вт', 'DLSS 3'],
+    tags: ['1080p', '16 ГБ', '165 Вт'],
+    length: 240,
+    watt: 165,
+    performance: 74,
+    popularity: 79,
+  },
+  {
+    id: 'rx-7900-xtx',
+    name: 'AMD Radeon RX 7900 XTX',
+    short: 'RX 7900 XTX',
+    category: 'Видеокарты',
+    slot: 'gpu',
+    price: 104990,
+    oldPrice: 119990,
+    rating: 4.8,
+    stock: 4,
+    image: 'assets/part-gpu.png',
+    specs: ['24 ГБ GDDR6', '330 мм', '355 Вт', '4K Ultra'],
+    tags: ['4K', '24 ГБ', '355 Вт'],
+    length: 330,
+    watt: 355,
+    performance: 97,
+    popularity: 82,
+  },
+  {
+    id: 'rtx-4090',
+    name: 'NVIDIA GeForce RTX 4090',
+    short: 'RTX 4090',
+    category: 'Видеокарты',
+    slot: 'gpu',
+    price: 219990,
+    oldPrice: 249990,
+    rating: 4.9,
+    stock: 2,
+    image: 'assets/part-gpu.png',
+    specs: ['24 ГБ GDDR6X', '336 мм', '450 Вт', '8K / Render'],
+    tags: ['Flagship', '24 ГБ', '450 Вт'],
+    length: 336,
+    watt: 450,
+    performance: 100,
+    popularity: 78,
+  },
+  {
     id: 'psu-650-gold',
-    name: 'VoltCore 650W Gold',
+    name: 'be quiet! Pure Power 12 M 650W',
     short: '650W Gold',
     category: 'Блоки питания',
     slot: 'psu',
@@ -366,7 +570,7 @@ const products = [
   },
   {
     id: 'psu-750-gold',
-    name: 'VoltCore 750W Gold',
+    name: '1STPLAYER NGDP Gold 750W',
     short: '750W Gold',
     category: 'Блоки питания',
     slot: 'psu',
@@ -384,7 +588,7 @@ const products = [
   },
   {
     id: 'psu-850-platinum',
-    name: 'VoltCore 850W Platinum',
+    name: 'Seasonic Focus PX-850 Platinum',
     short: '850W Platinum',
     category: 'Блоки питания',
     slot: 'psu',
@@ -402,7 +606,7 @@ const products = [
   },
   {
     id: 'psu-1000-platinum',
-    name: 'VoltCore 1000W Platinum',
+    name: 'Corsair HX1000i Platinum',
     short: '1000W Platinum',
     category: 'Блоки питания',
     slot: 'psu',
@@ -419,8 +623,26 @@ const products = [
     popularity: 73,
   },
   {
+    id: 'psu-1200-platinum',
+    name: 'be quiet! Straight Power 12 1200W',
+    short: '1200W Platinum',
+    category: 'Блоки питания',
+    slot: 'psu',
+    price: 32990,
+    oldPrice: 37990,
+    rating: 4.9,
+    stock: 4,
+    image: 'assets/part-psu.png',
+    specs: ['1200 Вт', '80+ Platinum', 'ATX 3.0', '12VHPWR'],
+    tags: ['1200 Вт', 'Platinum', 'Flagship'],
+    capacity: 1200,
+    watt: 0,
+    performance: 100,
+    popularity: 68,
+  },
+  {
     id: 'case-air-mesh',
-    name: 'Northline Air Mesh',
+    name: 'DeepCool CH560 Digital',
     short: 'Air Mesh',
     category: 'Корпуса',
     slot: 'case',
@@ -440,7 +662,7 @@ const products = [
   },
   {
     id: 'case-compact-mesh',
-    name: 'Cube M Compact Mesh',
+    name: 'Montech Air 100 ARGB',
     short: 'Compact M',
     category: 'Корпуса',
     slot: 'case',
@@ -460,7 +682,7 @@ const products = [
   },
   {
     id: 'case-glass-xl',
-    name: 'Panorama XL Glass',
+    name: 'Fractal Design Define C TG',
     short: 'Panorama XL',
     category: 'Корпуса',
     slot: 'case',
@@ -479,8 +701,48 @@ const products = [
     popularity: 80,
   },
   {
+    id: 'case-lancool-216',
+    name: 'Lian Li LANCOOL 216',
+    short: 'LANCOOL 216',
+    category: 'Корпуса',
+    slot: 'case',
+    price: 15990,
+    oldPrice: 18990,
+    rating: 4.8,
+    stock: 8,
+    image: 'assets/part-case.png',
+    specs: ['ATX / mATX', 'GPU до 392 мм', 'Кулер до 180 мм', 'Mesh front'],
+    tags: ['ATX', '392 мм GPU', 'Airflow'],
+    formFactors: ['ATX', 'mATX'],
+    maxGpu: 392,
+    coolerHeight: 180,
+    watt: 0,
+    performance: 94,
+    popularity: 87,
+  },
+  {
+    id: 'case-nr200p',
+    name: 'Cooler Master NR200P',
+    short: 'NR200P',
+    category: 'Корпуса',
+    slot: 'case',
+    price: 13990,
+    oldPrice: 16990,
+    rating: 4.7,
+    stock: 6,
+    image: 'assets/part-case.png',
+    specs: ['mATX compact', 'GPU до 330 мм', 'Кулер до 155 мм', 'SFF стиль'],
+    tags: ['mATX', '330 мм GPU', 'Compact'],
+    formFactors: ['mATX'],
+    maxGpu: 330,
+    coolerHeight: 155,
+    watt: 0,
+    performance: 82,
+    popularity: 73,
+  },
+  {
     id: 'cooler-tower-220',
-    name: 'IceTower 220 Air',
+    name: 'DEEPCOOL AK400',
     short: 'Tower 220',
     category: 'Охлаждение',
     slot: 'cooling',
@@ -500,7 +762,7 @@ const products = [
   },
   {
     id: 'cooler-aio-240',
-    name: 'LiquidLoop 240 ARGB',
+    name: 'DEEPCOOL LS520 SE 240',
     short: 'AIO 240',
     category: 'Охлаждение',
     slot: 'cooling',
@@ -520,7 +782,7 @@ const products = [
   },
   {
     id: 'cooler-aio-360',
-    name: 'LiquidLoop 360 Pro',
+    name: 'Arctic Liquid Freezer III 360',
     short: 'AIO 360',
     category: 'Охлаждение',
     slot: 'cooling',
@@ -537,6 +799,46 @@ const products = [
     watt: 16,
     performance: 96,
     popularity: 78,
+  },
+  {
+    id: 'cooler-ak620',
+    name: 'DEEPCOOL AK620 Digital',
+    short: 'AK620 Digital',
+    category: 'Охлаждение',
+    slot: 'cooling',
+    price: 10990,
+    oldPrice: 12990,
+    rating: 4.8,
+    stock: 10,
+    image: 'assets/part-cooler.png',
+    specs: ['До 260 Вт', 'Высота 162 мм', 'AM5 / LGA1700', 'Двойная башня'],
+    tags: ['260 Вт', '162 мм', 'Air'],
+    sockets: ['AM5', 'LGA1700'],
+    tdpLimit: 260,
+    height: 162,
+    watt: 8,
+    performance: 86,
+    popularity: 90,
+  },
+  {
+    id: 'cooler-noctua-d15',
+    name: 'Noctua NH-D15 chromax.black',
+    short: 'NH-D15',
+    category: 'Охлаждение',
+    slot: 'cooling',
+    price: 16990,
+    oldPrice: 19990,
+    rating: 4.9,
+    stock: 4,
+    image: 'assets/part-cooler.png',
+    specs: ['До 280 Вт', 'Высота 165 мм', 'AM5 / LGA1700', 'Тихий профиль'],
+    tags: ['280 Вт', '165 мм', 'Quiet'],
+    sockets: ['AM5', 'LGA1700'],
+    tdpLimit: 280,
+    height: 165,
+    watt: 7,
+    performance: 92,
+    popularity: 83,
   },
 ];
 
@@ -587,6 +889,30 @@ const presets = [
   },
 ];
 
+const heroBuilds = [
+  {
+    title: 'Start 1080p',
+    tag: 'Бюджетная сборка',
+    image: 'assets/hero-budget.png',
+    specs: ['Ryzen 5', 'RTX 4060 Ti', '32 ГБ DDR5'],
+    price: 'от 122 000 ₽',
+  },
+  {
+    title: 'Balance 1440p',
+    tag: 'Оптимальная сборка',
+    image: 'assets/hero-balanced.png',
+    specs: ['Ryzen 7 X3D', 'RTX 4070 Super', '2 ТБ NVMe'],
+    price: 'от 185 000 ₽',
+  },
+  {
+    title: 'Ultra 4K',
+    tag: 'Топовая сборка',
+    image: 'assets/hero-premium.png',
+    specs: ['Core i9 / Ryzen 9', 'RTX 4090', '1200W Platinum'],
+    price: 'от 390 000 ₽',
+  },
+];
+
 const categories = ['Все', ...new Set(products.map((product) => product.category))];
 const freeDeliveryFrom = 250000;
 const storageKeys = {
@@ -607,10 +933,16 @@ const state = {
   favorites: cleanFavorites(load(storageKeys.favorites, [])),
   build: loadBuild(),
   promo: '',
+  heroSlide: 1,
 };
 
 const elements = {
   header: document.querySelector('.site-header'),
+  heroProductCount: document.querySelector('#heroProductCount'),
+  heroSlideStage: document.querySelector('#heroSlideStage'),
+  heroDots: document.querySelector('#heroDots'),
+  heroPrev: document.querySelector('#heroPrev'),
+  heroNext: document.querySelector('#heroNext'),
   tabs: document.querySelector('#categoryTabs'),
   grid: document.querySelector('#productGrid'),
   resultCount: document.querySelector('#resultCount'),
@@ -930,6 +1262,40 @@ function renderPresets() {
     .join('');
 }
 
+function renderHeroCarousel() {
+  const current = heroBuilds[state.heroSlide];
+  elements.heroSlideStage.innerHTML = `
+    <article class="hero-slide">
+      <img src="${current.image}" alt="${current.title}" />
+      <div class="hero-slide-copy">
+        <span class="hero-slide-tag">${current.tag}</span>
+        <strong class="hero-slide-title">${current.title}</strong>
+        <small class="hero-slide-specs">${current.specs.join(' / ')}</small>
+      </div>
+      <div class="hero-slide-price">${current.price}</div>
+    </article>
+  `;
+
+  elements.heroDots.innerHTML = heroBuilds
+    .map(
+      (build, index) => `
+        <button
+          class="hero-dot ${index === state.heroSlide ? 'active' : ''}"
+          type="button"
+          aria-label="${build.tag}"
+          aria-pressed="${index === state.heroSlide}"
+          data-hero-slide="${index}"
+        ></button>
+      `,
+    )
+    .join('');
+}
+
+function shiftHeroSlide(delta) {
+  state.heroSlide = (state.heroSlide + delta + heroBuilds.length) % heroBuilds.length;
+  renderHeroCarousel();
+}
+
 function renderBuildSlots() {
   elements.buildSlots.innerHTML = slotDefinitions
     .map((slot, index) => {
@@ -969,16 +1335,97 @@ function renderBuildSlots() {
     .join('');
 }
 
+function completedSlots() {
+  return slotDefinitions.filter((slot) => productById(state.build[slot.id])).length;
+}
+
+function completionPercent() {
+  return Math.round((completedSlots() / slotDefinitions.length) * 100);
+}
+
+function buildStatus() {
+  const issues = buildIssues();
+  if (issues.some((issue) => issue.level === 'error')) {
+    return { tone: 'error', label: 'Нужна правка', text: 'Есть конфликт совместимости' };
+  }
+  if (completedSlots() < slotDefinitions.length) {
+    return { tone: 'warn', label: 'Черновик', text: 'Заполнены не все слоты' };
+  }
+  if (issues.some((issue) => issue.level === 'warn')) {
+    return { tone: 'warn', label: 'С запасом впритык', text: 'Сборка совместима, но запас лучше увеличить' };
+  }
+  return { tone: 'ok', label: 'Готово', text: 'Сборка совместима' };
+}
+
+function buildFacts() {
+  const cpu = productById(state.build.cpu);
+  const motherboard = productById(state.build.motherboard);
+  const ram = productById(state.build.ram);
+  const gpu = productById(state.build.gpu);
+  const psu = productById(state.build.psu);
+  const caseItem = productById(state.build.case);
+  const cooling = productById(state.build.cooling);
+  return [
+    ['Платформа', cpu && motherboard ? `${cpu.socket} / ${motherboard.formFactor}` : 'Не выбрана'],
+    ['Память', ram ? `${ram.capacity} ГБ ${ram.memoryType}` : 'Не выбрана'],
+    ['Видеокарта', gpu && caseItem ? `${gpu.length}/${caseItem.maxGpu} мм` : gpu?.short ?? 'Не выбрана'],
+    ['Питание', psu ? `${psu.capacity}/${recommendedPsu()} Вт` : 'Не выбрано'],
+    ['Охлаждение', cooling ? `до ${cooling.tdpLimit} Вт` : 'Не выбрано'],
+  ];
+}
+
+function visualCard(slotId, label, variant = '') {
+  const product = productById(state.build[slotId]);
+  const slot = slotDefinitions.find((item) => item.id === slotId);
+  return `
+    <article class="visual-card ${variant} ${product ? 'filled is-filled' : 'empty'}" data-preview-slot="${slotId}">
+      <div class="visual-thumb">
+        ${product ? `<img src="${product.image}" alt="${product.name}" />` : `<span>${slot?.short ?? label}</span>`}
+      </div>
+      <div>
+        <span>${label}</span>
+        <strong>${product?.short ?? 'Не выбрано'}</strong>
+      </div>
+    </article>
+  `;
+}
+
 function renderRig() {
-  const caseSelected = Boolean(productById(state.build.case));
-  elements.rigFrame.classList.toggle('case-filled', caseSelected);
-  document.querySelectorAll('.rig-part[data-slot]').forEach((part) => {
-    const slotId = part.dataset.slot;
-    const product = productById(state.build[slotId]);
-    part.classList.toggle('filled', Boolean(product));
-    part.querySelector('span').textContent = product?.short ?? slotDefinitions.find((slot) => slot.id === slotId)?.short;
-    part.title = product?.name ?? '';
-  });
+  const status = buildStatus();
+  const power = buildPower();
+  const recommended = recommendedPsu();
+  elements.rigFrame.className = `rig-frame build-preview ${status.tone}`;
+  elements.rigFrame.innerHTML = `
+    <div class="visual-topline">
+      <div>
+        <span>Live build</span>
+        <strong>${status.label}</strong>
+      </div>
+      <div class="visual-percent">${completionPercent()}%</div>
+    </div>
+    <div class="visual-progress" aria-hidden="true">
+      <span style="width: ${completionPercent()}%"></span>
+    </div>
+    <div class="visual-grid">
+      ${visualCard('motherboard', 'Материнская плата', 'visual-card-main')}
+      ${visualCard('cpu', 'Процессор')}
+      ${visualCard('cooling', 'Охлаждение')}
+      ${visualCard('ram', 'Оперативная память')}
+      ${visualCard('storage', 'Накопитель')}
+      ${visualCard('gpu', 'Видеокарта', 'visual-card-wide')}
+      ${visualCard('psu', 'Блок питания')}
+      ${visualCard('case', 'Корпус')}
+    </div>
+    <div class="visual-facts">
+      ${buildFacts()
+        .map(([label, value]) => `<span><small>${label}</small><strong>${value}</strong></span>`)
+        .join('')}
+    </div>
+    <div class="visual-power">
+      <span>${status.text}</span>
+      <strong>${power} Вт · БП от ${recommended} Вт</strong>
+    </div>
+  `;
 }
 
 function renderBuildSummary() {
@@ -1438,9 +1885,32 @@ elements.presetButtons.addEventListener('click', (event) => {
   if (button) applyPreset(button.dataset.preset);
 });
 
+elements.heroPrev.addEventListener('click', () => shiftHeroSlide(-1));
+elements.heroNext.addEventListener('click', () => shiftHeroSlide(1));
+elements.heroDots.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-hero-slide]');
+  if (!button) return;
+  state.heroSlide = Number(button.dataset.heroSlide);
+  renderHeroCarousel();
+});
+
 elements.buildSlots.addEventListener('click', (event) => {
   const button = event.target.closest('[data-build-pick]');
   if (button) pickBuildProduct(button.dataset.buildPick);
+});
+
+elements.rigFrame.addEventListener('click', (event) => {
+  const card = event.target.closest('[data-preview-slot]');
+  if (!card) return;
+  const slot = slotDefinitions.find((item) => item.id === card.dataset.previewSlot);
+  if (!slot) return;
+  const category = products.find((product) => product.slot === slot.id)?.category;
+  if (!category) return;
+  state.category = category;
+  state.favoritesOnly = false;
+  renderTabs();
+  renderProducts();
+  document.querySelector('#catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 elements.grid.addEventListener('click', (event) => {
@@ -1575,6 +2045,9 @@ window.addEventListener('scroll', () => {
   elements.header.classList.toggle('scrolled', window.scrollY > 12);
 });
 
+elements.heroProductCount.textContent = String(products.length);
+renderHeroCarousel();
 renderTabs();
 renderPresets();
 sync();
+window.setInterval(() => shiftHeroSlide(1), 7000);

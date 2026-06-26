@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="VoltMarket PC - статический интернет-магазин ПК-комплектующих с каталогом, сборщиком конфигураций и заказом без бэкенда."
+      content="VoltMarket PC - интернет-магазин ПК-комплектующих с каталогом, сборщиком конфигураций и оформлением заказа."
     />
     <meta name="theme-color" content="#101518" />
     <title>VoltMarket PC - комплектующие и сборщик ПК</title>
@@ -65,22 +65,17 @@
             <a class="secondary-link" href="#catalog">Открыть каталог</a>
           </div>
           <div class="hero-stats" aria-label="Показатели VoltMarket PC">
-            <span><strong>28</strong> позиций</span>
+            <span><strong id="heroProductCount">44</strong> позиции</span>
             <span><strong>8</strong> слотов сборки</span>
-            <span><strong>0</strong> серверов</span>
+            <span><strong>3</strong> профиля ПК</span>
           </div>
         </div>
 
-        <div class="hero-media" aria-label="Витрина сборки ПК VoltMarket">
-          <img src="assets/hero-rig.png" alt="Стилизованный системный блок и видеокарта" />
-          <div class="hero-chip hero-chip-top">
-            <span>Socket check</span>
-            <strong>AM5 / LGA1700</strong>
-          </div>
-          <div class="hero-chip">
-            <span>Power budget</span>
-            <strong>+30% запас</strong>
-          </div>
+        <div class="hero-media hero-carousel" aria-label="Готовые сборки VoltMarket">
+          <div class="hero-slide-stage" id="heroSlideStage"></div>
+          <button class="carousel-button carousel-prev" id="heroPrev" type="button" aria-label="Предыдущая сборка">‹</button>
+          <button class="carousel-button carousel-next" id="heroNext" type="button" aria-label="Следующая сборка">›</button>
+          <div class="hero-dots" id="heroDots" aria-label="Выбор сборки"></div>
         </div>
       </section>
 
@@ -98,32 +93,7 @@
 
           <div class="rig-stage">
             <div class="rig-shell" aria-label="Визуализация выбранной сборки">
-              <div class="rig-frame" id="rigFrame">
-                <span class="rig-fan rig-fan-one"></span>
-                <span class="rig-fan rig-fan-two"></span>
-                <span class="rig-fan rig-fan-three"></span>
-                <div class="rig-part rig-board" data-slot="motherboard">
-                  <span>Board</span>
-                </div>
-                <div class="rig-part rig-cpu" data-slot="cpu">
-                  <span>CPU</span>
-                </div>
-                <div class="rig-part rig-cooler" data-slot="cooling">
-                  <span>Cooler</span>
-                </div>
-                <div class="rig-part rig-ram" data-slot="ram">
-                  <span>RAM</span>
-                </div>
-                <div class="rig-part rig-gpu" data-slot="gpu">
-                  <span>GPU</span>
-                </div>
-                <div class="rig-part rig-storage" data-slot="storage">
-                  <span>SSD</span>
-                </div>
-                <div class="rig-part rig-psu" data-slot="psu">
-                  <span>PSU</span>
-                </div>
-              </div>
+              <div class="rig-frame build-preview" id="rigFrame"></div>
             </div>
 
             <div class="build-summary">
@@ -207,12 +177,12 @@
           <article>
             <span>02</span>
             <h3>Смета без регистрации</h3>
-            <p>Сборка и корзина сохраняются в браузере, а заявка создаётся как статический демо-заказ.</p>
+            <p>Сборка и корзина сохраняются в браузере, а заявка фиксирует состав и итоговую стоимость.</p>
           </article>
           <article>
             <span>03</span>
-            <h3>Готово для Pages</h3>
-            <p>Все стили, изображения и сценарии лежат локально: HTML, CSS и JavaScript без API.</p>
+            <h3>Подбор под задачу</h3>
+            <p>Игровая, рабочая или компактная конфигурация собирается с понятной сметой и проверками.</p>
           </article>
         </div>
       </section>
@@ -224,7 +194,7 @@
           <span class="brand-mark">VM</span>
           <span>VoltMarket PC</span>
         </a>
-        <p>Статический демо-магазин комплектующих для публикации на GitHub Pages.</p>
+        <p>Каталог комплектующих, подбор сборки и оформление заказа в одном интерфейсе.</p>
       </div>
       <div>
         <strong>Связь</strong>
