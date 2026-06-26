@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="VoltMarket - статический интернет-магазин электроники с каталогом, фильтрами и корзиной."
+    />
+    <title>VoltMarket - интернет-магазин электроники</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="VoltMarket на главную">
+        <span class="brand-mark">V</span>
+        <span>VoltMarket</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#benefits">Сервис</a>
+        <a href="#deals">Скидки</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-shell" for="globalSearch">
+          <span aria-hidden="true">⌕</span>
+          <input id="globalSearch" type="search" placeholder="Найти технику" autocomplete="off" />
+        </label>
+        <button class="icon-button" id="wishlistButton" type="button" aria-label="Показать избранное">
+          <span aria-hidden="true">♡</span>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+        <button class="cart-button" id="cartOpen" type="button">
+          <span aria-hidden="true">🛒</span>
+          <span>Корзина</span>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Новая техника каждую неделю</p>
+          <h1 id="heroTitle">VoltMarket</h1>
+          <p class="hero-text">
+            Готовый магазин электроники: смартфоны, ноутбуки, аудио, игровые аксессуары и умные
+            устройства с фильтрами, корзиной и быстрым оформлением.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#catalog">Смотреть каталог</a>
+            <a class="secondary-link" href="#deals">Горящие предложения</a>
+          </div>
+          <div class="hero-stats" aria-label="Преимущества магазина">
+            <span><strong>48 ч</strong> доставка</span>
+            <span><strong>24 мес</strong> гарантия</span>
+            <span><strong>0%</strong> рассрочка</span>
+          </div>
+        </div>
+        <div class="hero-media" aria-label="Подборка электроники VoltMarket">
+          <img src="assets/hero-showcase.png" alt="Ноутбук, смартфон и наушники на витрине" />
+        </div>
+      </section>
+
+      <section class="benefits" id="benefits" aria-label="Сервис">
+        <article>
+          <span>01</span>
+          <h2>Проверка перед отправкой</h2>
+          <p>Каждое устройство проходит базовый тест, упаковку и фотофиксацию комплектации.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>Гарантия и обмен</h2>
+          <p>Возврат 14 дней, сервисная поддержка и прозрачный статус обращения.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>Оплата как удобно</h2>
+          <p>Карта, перевод, рассрочка и оплата при получении для доступных регионов.</p>
+        </article>
+      </section>
+
+      <section class="catalog-section" id="catalog" aria-labelledby="catalogTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Каталог</p>
+          <h2 id="catalogTitle">Электроника в наличии</h2>
+          <p>Фильтруй по категориям, цене и наличию. Корзина и избранное сохраняются в браузере.</p>
+        </div>
+
+        <div class="toolbar" aria-label="Фильтры каталога">
+          <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Категории"></div>
+          <label class="select-shell">
+            <span>Сортировка</span>
+            <select id="sortSelect">
+              <option value="popular">По популярности</option>
+              <option value="priceAsc">Сначала дешевле</option>
+              <option value="priceDesc">Сначала дороже</option>
+              <option value="rating">По рейтингу</option>
+            </select>
+          </label>
+          <label class="range-shell" for="priceRange">
+            <span>До <strong id="priceValue">250 000 ₽</strong></span>
+            <input id="priceRange" type="range" min="10000" max="250000" value="250000" step="5000" />
+          </label>
+          <label class="toggle-shell">
+            <input id="stockOnly" type="checkbox" />
+            <span>Только в наличии</span>
+          </label>
+        </div>
+
+        <div class="catalog-meta">
+          <span id="resultCount">0 товаров</span>
+          <button class="text-button" id="resetFilters" type="button">Сбросить фильтры</button>
+        </div>
+
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="deal-strip" id="deals" aria-labelledby="dealsTitle">
+        <div>
+          <p class="eyebrow">Скидка дня</p>
+          <h2 id="dealsTitle">Минус 10% на комплект ноутбук + аксессуары</h2>
+          <p>Промокод <strong>VOLT10</strong> применяется в корзине и снижает итоговую сумму.</p>
+        </div>
+        <button class="primary-button" id="applyDeal" type="button">Применить промокод</button>
+      </section>
+
+      <section class="compare-section" aria-labelledby="compareTitle">
+        <div class="section-heading compact">
+          <p class="eyebrow">Сравнение</p>
+          <h2 id="compareTitle">Выбранные модели</h2>
+        </div>
+        <div class="compare-table" id="compareTable">
+          <p class="empty-state">Добавь товары через кнопку «Сравнить» в карточке.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark">V</span>
+          <span>VoltMarket</span>
+        </a>
+        <p>Статический демо-магазин электроники на HTML, CSS и JavaScript.</p>
+      </div>
+      <div>
+        <strong>Связь</strong>
+        <a href="mailto:hello@voltmarket.example">hello@voltmarket.example</a>
+        <a href="tel:+79990000000">+7 999 000-00-00</a>
+      </div>
+      <div>
+        <strong>Покупателям</strong>
+        <a href="#benefits">Доставка</a>
+        <a href="#catalog">Каталог</a>
+      </div>
+    </footer>
+
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Корзина">
+      <div class="cart-panel">
+        <div class="cart-head">
+          <div>
+            <p class="eyebrow">Оформление</p>
+            <h2>Корзина</h2>
+          </div>
+          <button class="icon-button" id="cartClose" type="button" aria-label="Закрыть корзину">×</button>
+        </div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <form class="checkout-form" id="checkoutForm">
+          <label>
+            <span>Промокод</span>
+            <input id="promoInput" type="text" placeholder="VOLT10" autocomplete="off" />
+          </label>
+          <label>
+            <span>Имя</span>
+            <input id="customerName" type="text" placeholder="Алексей" required />
+          </label>
+          <label>
+            <span>Телефон</span>
+            <input id="customerPhone" type="tel" placeholder="+7 999 000-00-00" required />
+          </label>
+          <div class="cart-total">
+            <span>Итого</span>
+            <strong id="cartTotal">0 ₽</strong>
+          </div>
+          <button class="primary-button full" type="submit">Оформить заказ</button>
+        </form>
+      </div>
+    </aside>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
