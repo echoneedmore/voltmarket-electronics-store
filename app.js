@@ -228,7 +228,7 @@ function productCard(product) {
   return `
     <article class="product-card">
       <div class="product-image">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" />
+        <img src="${product.image}" alt="${product.name}" />
       </div>
       <div class="product-body">
         <div class="product-top">
