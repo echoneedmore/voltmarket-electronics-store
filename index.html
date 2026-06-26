@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="VoltMarket - статический интернет-магазин электроники с каталогом, фильтрами и корзиной."
+      content="VoltMarket PC - статический интернет-магазин ПК-комплектующих с каталогом, сборщиком конфигураций и заказом без бэкенда."
     />
-    <meta name="theme-color" content="#151719" />
-    <title>VoltMarket - интернет-магазин электроники</title>
+    <meta name="theme-color" content="#101518" />
+    <title>VoltMarket PC - комплектующие и сборщик ПК</title>
+    <link rel="icon" href="assets/part-cpu.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#catalog">К каталогу</a>
+    <a class="skip-link" href="#builder">К сборщику</a>
 
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="VoltMarket на главную">
-        <span class="brand-mark">V</span>
-        <span>VoltMarket</span>
+      <a class="brand" href="#top" aria-label="VoltMarket PC на главную">
+        <span class="brand-mark">VM</span>
+        <span>VoltMarket PC</span>
       </a>
 
       <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#builder">Сборщик</a>
         <a href="#catalog">Каталог</a>
-        <a href="#benefits">Сервис</a>
-        <a href="#deals">Скидки</a>
+        <a href="#service">Сервис</a>
         <a href="#contacts">Контакты</a>
       </nav>
 
       <div class="header-actions">
         <label class="search-shell" for="globalSearch">
           <span aria-hidden="true">⌕</span>
-          <input id="globalSearch" type="search" placeholder="Найти технику" autocomplete="off" />
+          <input id="globalSearch" type="search" placeholder="Поиск по железу" autocomplete="off" />
         </label>
         <button
           class="icon-button"
@@ -43,8 +44,8 @@
           <span class="badge" id="wishlistCount">0</span>
         </button>
         <button class="cart-button" id="cartOpen" type="button">
-          <span aria-hidden="true">🛒</span>
-          <span>Корзина</span>
+          <span aria-hidden="true">▣</span>
+          <span>Заказ</span>
           <span class="badge" id="cartCount">0</span>
         </button>
       </div>
@@ -53,58 +54,106 @@
     <main id="top">
       <section class="hero" aria-labelledby="heroTitle">
         <div class="hero-copy">
-          <p class="eyebrow">Новая техника каждую неделю</p>
-          <h1 id="heroTitle">VoltMarket</h1>
+          <p class="eyebrow">Каталог комплектующих</p>
+          <h1 id="heroTitle">VoltMarket PC</h1>
           <p class="hero-text">
-            Готовый магазин электроники: смартфоны, ноутбуки, аудио, игровые аксессуары и умные
-            устройства с фильтрами, корзиной и быстрым оформлением.
+            Магазин железа для игровых, рабочих и тихих сборок: подбор по сокету, расчёт мощности,
+            корзина и заявка работают прямо в браузере.
           </p>
           <div class="hero-actions">
-            <a class="primary-link" href="#catalog">Смотреть каталог</a>
-            <a class="secondary-link" href="#deals">Горящие предложения</a>
+            <a class="primary-link" href="#builder">Собрать ПК</a>
+            <a class="secondary-link" href="#catalog">Открыть каталог</a>
           </div>
-          <div class="hero-stats" aria-label="Преимущества магазина">
-            <span><strong>48 ч</strong> доставка</span>
-            <span><strong>24 мес</strong> гарантия</span>
-            <span><strong>0%</strong> рассрочка</span>
+          <div class="hero-stats" aria-label="Показатели VoltMarket PC">
+            <span><strong>28</strong> позиций</span>
+            <span><strong>8</strong> слотов сборки</span>
+            <span><strong>0</strong> серверов</span>
           </div>
         </div>
-        <div class="hero-media" aria-label="Подборка электроники VoltMarket">
-          <img src="assets/hero-showcase.png" alt="Ноутбук, смартфон и наушники на витрине" />
-          <div class="hero-pill">
-            <span>Сервис</span>
-            <strong>24 месяца</strong>
+
+        <div class="hero-media" aria-label="Витрина сборки ПК VoltMarket">
+          <img src="assets/hero-rig.png" alt="Стилизованный системный блок и видеокарта" />
+          <div class="hero-chip hero-chip-top">
+            <span>Socket check</span>
+            <strong>AM5 / LGA1700</strong>
           </div>
-          <div class="hero-pill hero-pill-alt">
-            <span>Доставка</span>
-            <strong>от 48 ч</strong>
+          <div class="hero-chip">
+            <span>Power budget</span>
+            <strong>+30% запас</strong>
           </div>
         </div>
       </section>
 
-      <section class="benefits" id="benefits" aria-label="Сервис">
-        <article>
-          <span>01</span>
-          <h2>Проверка перед отправкой</h2>
-          <p>Каждое устройство проходит базовый тест, упаковку и фотофиксацию комплектации.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h2>Гарантия и обмен</h2>
-          <p>Возврат 14 дней, сервисная поддержка и прозрачный статус обращения.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h2>Оплата как удобно</h2>
-          <p>Карта, перевод, рассрочка и оплата при получении для доступных регионов.</p>
-        </article>
+      <section class="builder-section" id="builder" aria-labelledby="builderTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Конфигуратор</p>
+          <h2 id="builderTitle">Сборщик ПК</h2>
+          <p>Подборка, совместимость и стоимость обновляются сразу при выборе комплектующих.</p>
+        </div>
+
+        <div class="preset-row" id="presetButtons" aria-label="Готовые подборки"></div>
+
+        <div class="builder-layout">
+          <div class="slot-list" id="buildSlots" aria-label="Слоты сборки"></div>
+
+          <div class="rig-stage">
+            <div class="rig-shell" aria-label="Визуализация выбранной сборки">
+              <div class="rig-frame" id="rigFrame">
+                <span class="rig-fan rig-fan-one"></span>
+                <span class="rig-fan rig-fan-two"></span>
+                <span class="rig-fan rig-fan-three"></span>
+                <div class="rig-part rig-board" data-slot="motherboard">
+                  <span>Board</span>
+                </div>
+                <div class="rig-part rig-cpu" data-slot="cpu">
+                  <span>CPU</span>
+                </div>
+                <div class="rig-part rig-cooler" data-slot="cooling">
+                  <span>Cooler</span>
+                </div>
+                <div class="rig-part rig-ram" data-slot="ram">
+                  <span>RAM</span>
+                </div>
+                <div class="rig-part rig-gpu" data-slot="gpu">
+                  <span>GPU</span>
+                </div>
+                <div class="rig-part rig-storage" data-slot="storage">
+                  <span>SSD</span>
+                </div>
+                <div class="rig-part rig-psu" data-slot="psu">
+                  <span>PSU</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="build-summary">
+              <div class="summary-top">
+                <div>
+                  <p class="eyebrow">Смета</p>
+                  <h3 id="buildName">Текущая сборка</h3>
+                </div>
+                <strong id="buildTotal">0 ₽</strong>
+              </div>
+
+              <div class="metric-grid" id="buildMetrics"></div>
+              <div class="score-bars" id="scoreBars"></div>
+              <ul class="compatibility-list" id="compatibilityList"></ul>
+
+              <div class="builder-actions">
+                <button class="primary-button" id="buildToCart" type="button">Добавить сборку</button>
+                <button class="secondary-button" id="copyBuild" type="button">Скопировать смету</button>
+                <button class="text-button" id="resetBuild" type="button">Очистить</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="catalog-section" id="catalog" aria-labelledby="catalogTitle">
         <div class="section-heading">
           <p class="eyebrow">Каталог</p>
-          <h2 id="catalogTitle">Электроника в наличии</h2>
-          <p>Фильтруй по категориям, цене и наличию. Корзина и избранное сохраняются в браузере.</p>
+          <h2 id="catalogTitle">Комплектующие в наличии</h2>
+          <p>Процессоры, видеокарты, платы, память, накопители, питание, корпуса и охлаждение.</p>
         </div>
 
         <div class="toolbar" aria-label="Фильтры каталога">
@@ -116,15 +165,20 @@
               <option value="priceAsc">Сначала дешевле</option>
               <option value="priceDesc">Сначала дороже</option>
               <option value="rating">По рейтингу</option>
+              <option value="power">По производительности</option>
             </select>
           </label>
           <label class="range-shell" for="priceRange">
             <span>До <strong id="priceValue">250 000 ₽</strong></span>
-            <input id="priceRange" type="range" min="10000" max="250000" value="250000" step="5000" />
+            <input id="priceRange" type="range" min="5000" max="250000" value="250000" step="5000" />
+          </label>
+          <label class="toggle-shell">
+            <input id="compatibleOnly" type="checkbox" />
+            <span>Подходит к сборке</span>
           </label>
           <label class="toggle-shell">
             <input id="stockOnly" type="checkbox" />
-            <span>Только в наличии</span>
+            <span>В наличии</span>
           </label>
         </div>
 
@@ -139,22 +193,27 @@
         <div class="product-grid" id="productGrid" aria-live="polite"></div>
       </section>
 
-      <section class="deal-strip" id="deals" aria-labelledby="dealsTitle">
-        <div>
-          <p class="eyebrow">Скидка дня</p>
-          <h2 id="dealsTitle">Минус 10% на комплект ноутбук + аксессуары</h2>
-          <p>Промокод <strong>VOLT10</strong> применяется в корзине и снижает итоговую сумму.</p>
-        </div>
-        <button class="primary-button" id="applyDeal" type="button">Применить промокод</button>
-      </section>
-
-      <section class="compare-section" aria-labelledby="compareTitle">
+      <section class="service-section" id="service" aria-labelledby="serviceTitle">
         <div class="section-heading compact">
-          <p class="eyebrow">Сравнение</p>
-          <h2 id="compareTitle">Выбранные модели</h2>
+          <p class="eyebrow">Сервис</p>
+          <h2 id="serviceTitle">Что получает покупатель</h2>
         </div>
-        <div class="compare-table" id="compareTable">
-          <p class="empty-state">Добавь товары через кнопку «Сравнить» в карточке.</p>
+        <div class="service-grid">
+          <article>
+            <span>01</span>
+            <h3>Проверка комплекта</h3>
+            <p>Сокет, память, габариты корпуса и запас блока питания сверяются в конфигураторе.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Смета без регистрации</h3>
+            <p>Сборка и корзина сохраняются в браузере, а заявка создаётся как статический демо-заказ.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Готово для Pages</h3>
+            <p>Все стили, изображения и сценарии лежат локально: HTML, CSS и JavaScript без API.</p>
+          </article>
         </div>
       </section>
     </main>
@@ -162,10 +221,10 @@
     <footer class="site-footer" id="contacts">
       <div>
         <a class="brand footer-brand" href="#top">
-          <span class="brand-mark">V</span>
-          <span>VoltMarket</span>
+          <span class="brand-mark">VM</span>
+          <span>VoltMarket PC</span>
         </a>
-        <p>Статический демо-магазин электроники на HTML, CSS и JavaScript.</p>
+        <p>Статический демо-магазин комплектующих для публикации на GitHub Pages.</p>
       </div>
       <div>
         <strong>Связь</strong>
@@ -173,8 +232,8 @@
         <a href="tel:+79990000000">+7 999 000-00-00</a>
       </div>
       <div>
-        <strong>Покупателям</strong>
-        <a href="#benefits">Доставка</a>
+        <strong>Разделы</strong>
+        <a href="#builder">Сборщик</a>
         <a href="#catalog">Каталог</a>
       </div>
     </footer>
@@ -195,14 +254,14 @@
       </div>
     </aside>
 
-    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Корзина">
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Заказ">
       <div class="cart-panel">
         <div class="cart-head">
           <div>
             <p class="eyebrow">Оформление</p>
-            <h2>Корзина</h2>
+            <h2>Заказ</h2>
           </div>
-          <button class="icon-button" id="cartClose" type="button" aria-label="Закрыть корзину">×</button>
+          <button class="icon-button" id="cartClose" type="button" aria-label="Закрыть заказ">×</button>
         </div>
 
         <div class="cart-items" id="cartItems"></div>
@@ -210,7 +269,7 @@
         <form class="checkout-form" id="checkoutForm">
           <label>
             <span>Промокод</span>
-            <input id="promoInput" type="text" placeholder="VOLT10" autocomplete="off" />
+            <input id="promoInput" type="text" placeholder="BUILD7" autocomplete="off" />
           </label>
           <label>
             <span>Имя</span>
@@ -220,15 +279,21 @@
             <span>Телефон</span>
             <input id="customerPhone" type="tel" placeholder="+7 999 000-00-00" required />
           </label>
+          <label>
+            <span>Город</span>
+            <input id="customerCity" type="text" placeholder="Москва" required />
+          </label>
+
           <div class="delivery-progress">
             <div class="delivery-progress-top">
-              <span id="deliveryNote">Добавь товары для расчёта доставки</span>
-              <strong>100 000 ₽</strong>
+              <span id="deliveryNote">Добавь комплектующие для расчёта доставки</span>
+              <strong>250 000 ₽</strong>
             </div>
             <span class="delivery-meter" aria-hidden="true">
               <span id="deliveryMeter"></span>
             </span>
           </div>
+
           <div class="cart-summary">
             <div>
               <span>Товары</span>
@@ -243,7 +308,7 @@
             <span>Итого</span>
             <strong id="cartTotal">0 ₽</strong>
           </div>
-          <button class="primary-button full" type="submit">Оформить заказ</button>
+          <button class="primary-button full" type="submit">Отправить заявку</button>
         </form>
       </div>
     </aside>
